@@ -12,10 +12,13 @@ int numDientesVolante = 6; // Número de dientes del volante o del distribuidor 
 int numInyectoresActivos = 2; // Número inyectores que estaran activos
 float voltageCTL = 0.0;
 float temperature = 0.0;
-const float setTemp = 70.0; // Temperatura deseada en grados Celsius para ativar relay del Fan
+const float setTemp = 70.0; // Variable para ajustar Temperatura deseada en grados Celsius para ativar relay del Fan
 
-// Variable para activar el tiempo de impresion de cadena de texto
-const unsigned long vueltasMotorParaImprimir = 100; // Número de vueltas del motor para imprimir cadena de texto
+// Variable global para ajustar Porcentaje de combustible extra con el motor a baja Temperatura (%)
+const float PORCENTAJE_COMBUSTIBLE_EXTRA = 0.2; 
+
+// Variable global para activar el tiempo de impresion de cadena de texto
+const unsigned long vueltasMotorParaImprimir = 1; // Número de vueltas del motor para imprimir cadena de texto
 volatile unsigned long vueltasMotor = 0;
 int prevRpm = 0.0;
 
@@ -26,7 +29,10 @@ bool modoPrueba = false;
 int usarSensorLeva = 0; // Puedes cambiar este valor según tus necesidades
 
 // Variable global para activar o desactivar manualmente el uso del sensor de oxígeno 1 activa u 0 desactiva
-extern int usarSensorO2 = 1;
+int usarSensorO2 = 0; // Puedes cambiar este valor según tus necesidades
+
+// Variable global para ajustar el tiempo en ms del ancho de pulso segun condicion el sensor O2
+float ajusteO2Global = 1.0; // Puedes cambiar este valor según tus necesidades
 
 
 void setup()
